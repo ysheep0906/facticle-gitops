@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "Facticle-crawler.fullname" . }}
+  name: {{ include "facticle-crawler.fullname" . }}
   labels:
-    {{- include "Facticle-crawler.labels" . | nindent 4 }}
+    {{- include "facticle-crawler.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "Facticle-crawler.selectorLabels" . | nindent 4 }}
+    {{- include "facticle-crawler.selectorLabels" . | nindent 4 }}

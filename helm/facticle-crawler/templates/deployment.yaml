@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "Facticle-crawler.fullname" . }}
+  name: {{ include "facticle-crawler.fullname" . }}
   labels:
-    {{- include "Facticle-crawler.labels" . | nindent 4 }}
+    {{- include "facticle-crawler.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "Facticle-crawler.selectorLabels" . | nindent 6 }}
+      {{- include "facticle-crawler.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "Facticle-crawler.labels" . | nindent 8 }}
+        {{- include "facticle-crawler.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "Facticle-crawler.serviceAccountName" . }}
+      serviceAccountName: {{ include "facticle-crawler.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}

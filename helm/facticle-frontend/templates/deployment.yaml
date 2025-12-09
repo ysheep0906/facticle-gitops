@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "Facticle-frontend.fullname" . }}
+  name: {{ include "facticle-frontend.fullname" . }}
   labels:
-    {{- include "Facticle-frontend.labels" . | nindent 4 }}
+    {{- include "facticle-frontend.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "Facticle-frontend.selectorLabels" . | nindent 6 }}
+      {{- include "facticle-frontend.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "Facticle-frontend.labels" . | nindent 8 }}
+        {{- include "facticle-frontend.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "Facticle-frontend.serviceAccountName" . }}
+      serviceAccountName: {{ include "facticle-frontend.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
