@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/ysheep0906/facticle-gitops.git
     targetRevision: main
-    path: helm/backend
+    path: helm/facticle-backend
   destination:
     server: https://kubernetes.default.svc
     namespace: backend

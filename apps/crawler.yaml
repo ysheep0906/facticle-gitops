@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/ysheep0906/facticle-gitops.git
     targetRevision: main
-    path: helm/crawler
+    path: helm/facticle-crawler
   destination:
     server: https://kubernetes.default.svc
     namespace: crawler
