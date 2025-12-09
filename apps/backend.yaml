@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend
+  name: facticle-backend
   namespace: argocd
 spec:
   project: default
@@ -11,8 +11,10 @@ spec:
     path: helm/facticle-backend
   destination:
     server: https://kubernetes.default.svc
-    namespace: backend
+    namespace: facticle-backend
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
