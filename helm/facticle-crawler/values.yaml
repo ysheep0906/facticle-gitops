@@ -21,39 +21,70 @@ fullnameOverride: ""
 schedule: "0 */1 * * *" # Every hour
 
 env:
+  # ===============================
+  # Database
+  # ===============================
   - name: DB_HOST
-    secretKeyRef:
-      name: facticle-db-secret
-      key: host
-  - name: DB_PORT
-    secretKeyRef:
-      name: facticle-db-secret
-      key: port
-  - name: DB_USER
-    secretKeyRef:
-      name: facticle-db-secret
-      key: username
-  - name: DB_PASSWORD
-    secretKeyRef:
-      name: facticle-db-secret
-      key: password
-  - name: DB_NAME
-    secretKeyRef:
-      name: facticle-db-secret
-      key: database
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: host
 
-  - name: ES_HOST
-    secretKeyRef:
-      name: facticle-os-secret
-      key: endpoint
-  - name: ES_USER
-    secretKeyRef:
-      name: facticle-os-secret
-      key: username
-  - name: ES_PASSWORD
-    secretKeyRef:
-      name: facticle-os-secret
-      key: password
+  - name: DB_PORT
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: port
+
+  - name: DB_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: username
+
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: password
+
+  - name: DB_NAME
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: database
+
+
+  # ===============================
+  # OpenSearch
+  # ===============================
+  - name: OPENSEARCH_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: facticle-os-secret
+        key: endpoint
+
+  - name: OPENSEARCH_USER
+    valueFrom:
+      secretKeyRef:
+        name: facticle-os-secret
+        key: username
+
+  - name: OPENSEARCH_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: facticle-os-secret
+        key: password
+
+
+# ===============================
+# OPENAPI KEY
+# ===============================
+  - name: OPENAPI_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: facticle-openapi-secret
+        key: api_key
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:

@@ -56,110 +56,134 @@ service:
   port: 8080
 
 env:
-# Database connection settings
+  # ===============================
+  # Database
+  # ===============================
   - name: DB_HOST
-    secretKeyRef:
-      name: facticle-db-secret
-      key: host
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: host
+
   - name: DB_PORT
-    secretKeyRef:
-      name: facticle-db-secret
-      key: port
-  - name: DB_USER
-    secretKeyRef:
-      name: facticle-db-secret
-      key: username
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: port
+
+  - name: DB_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: username
+
   - name: DB_PASSWORD
-    secretKeyRef:
-      name: facticle-db-secret
-      key: password
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: password
+
   - name: DB_NAME
-    secretKeyRef:
-      name: facticle-db-secret
-      key: database
+    valueFrom:
+      secretKeyRef:
+        name: facticle-db-secret
+        key: database
 
-# Elastic Search connection settings
+
+  # ===============================
+  # OpenSearch
+  # ===============================
   - name: OPENSEARCH_ENDPOINT
-    secretKeyRef:
-      name: facticle-os-secret
-      key: endpoint
-  - name: OPENSEARCH_USER
-    secretKeyRef:
-      name: facticle-os-secret
-      key: username
-  - name: OPENSEARCH_PASSWORD
-    secretKeyRef:
-      name: facticle-os-secret
-      key: password
+    valueFrom:
+      secretKeyRef:
+        name: facticle-os-secret
+        key: endpoint
 
-# Storage settings
+  # ===============================
+  # S3
+  # ===============================
   - name: S3_ENDPOINT
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: endpoint
+
   - name: S3_ACCESS_KEY
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: access-key
+
   - name: S3_SECRET_KEY
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: secret-key
+
   - name: S3_BUCKET_NAME
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: bucket-name
 
-# OAuth settings
+
+  # ===============================
+  # OAuth
+  # ===============================
   - name: GOOGLE_CLIENT_ID
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: google-client-id
+
   - name: GOOGLE_CLIENT_SECRET
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: google-client-secret
+
   - name: GOOGLE_REDIRECT_URI
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: google-redirect-uri
+
   - name: KAKAO_CLIENT_ID
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: kakao-client-id
+
   - name: KAKAO_CLIENT_SECRET
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: kakao-client-secret
+
   - name: KAKAO_REDIRECT_URI
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: kakao-redirect-uri
+
   - name: NAVER_CLIENT_ID
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: naver-client-id
+
   - name: NAVER_CLIENT_SECRET
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: naver-client-secret
+
   - name: NAVER_REDIRECT_URI
     valueFrom:
       secretKeyRef:
         name: facticle-oauth-secret
         key: naver-redirect-uri
+
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
