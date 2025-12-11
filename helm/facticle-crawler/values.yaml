@@ -64,26 +64,14 @@ env:
         name: facticle-os-secret
         key: endpoint
 
-  - name: OPENSEARCH_USER
-    valueFrom:
-      secretKeyRef:
-        name: facticle-os-secret
-        key: username
-
-  - name: OPENSEARCH_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: facticle-os-secret
-        key: password
-
 
 # ===============================
-# OPENAPI KEY
+# OPENAI KEY
 # ===============================
-  - name: OPENAPI_API_KEY
+  - name: OPENAI_API_KEY
     valueFrom:
       secretKeyRef:
-        name: facticle-openapi-secret
+        name: facticle-openai-secret
         key: api_key
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
