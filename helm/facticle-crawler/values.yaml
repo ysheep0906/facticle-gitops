@@ -36,7 +36,7 @@ env:
         name: facticle-db-secret
         key: port
 
-  - name: DB_USERNAME
+  - name: DB_USER
     valueFrom:
       secretKeyRef:
         name: facticle-db-secret
@@ -58,7 +58,7 @@ env:
   # ===============================
   # OpenSearch
   # ===============================
-  - name: OPENSEARCH_ENDPOINT
+  - name: ES_HOST
     valueFrom:
       secretKeyRef:
         name: facticle-os-secret
