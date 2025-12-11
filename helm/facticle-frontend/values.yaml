@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "71a61d357b0307377babf9544c383be015ef0bf6"
+  tag: "350fc68e4393ba70aadd34f9eef9a2c544658b84"
 
 env:
   - name: VITE_API_URL
