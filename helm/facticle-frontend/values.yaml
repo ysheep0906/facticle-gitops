@@ -13,6 +13,45 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "d83b8c5e92f7b733dc3cd46bdc5487a9888ee602"
 
+env:
+  - name: VITE_API_URL
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_API_URL
+  - name: VITE_KAKAO_REST_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_KAKAO_REST_API_KEY
+  - name: VITE_REDIRECT_URI
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_REDIRECT_URI
+  - name: VITE_NAVER_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_NAVER_CLIENT_ID
+  - name: VITE_NAVER_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_NAVER_CLIENT_SECRET 
+  - name: VITE_GOOGLE_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_GOOGLE_CLIENT_ID
+  - name: VITE_GOOGLE_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: facticle-frontend-env-secret
+        key: VITE_GOOGLE_CLIENT_SECRET
+
+        
+
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
 # This is to override the chart name.
