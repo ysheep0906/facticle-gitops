@@ -108,19 +108,19 @@ env:
         name: facticle-s3-secret
         key: endpoint
 
-  - name: S3_ACCESS_KEY
+  - name: AWS_ACCESS_KEY
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: access-key
 
-  - name: S3_SECRET_KEY
+  - name: AWS_SECRET_KEY
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
         key: secret-key
 
-  - name: S3_BUCKET_NAME
+  - name: AWS_BUCKET_NAME
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
