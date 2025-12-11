@@ -102,11 +102,11 @@ env:
   # ===============================
   # S3
   # ===============================
-  - name: S3_ENDPOINT
+  - name: S3_DEFAULT_PROFILE
     valueFrom:
       secretKeyRef:
         name: facticle-s3-secret
-        key: endpoint
+        key: default-profile
 
   - name: AWS_ACCESS_KEY
     valueFrom:
