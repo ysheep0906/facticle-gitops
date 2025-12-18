@@ -13,3 +13,11 @@ app: facticle-crawler
 {{- define "facticle-crawler.selectorLabels" -}}
 app: facticle-crawler
 {{- end }}
+
+{{- define "facticle-crawler.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+{{ default (include "facticle-crawler.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+default
+{{- end -}}
+{{- end -}}
