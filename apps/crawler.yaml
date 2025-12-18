@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: facticle-crawler
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ysheep0906/facticle-gitops.git
+    targetRevision: main
+    path: helm/facticle-crawler
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: facticle-crawler
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

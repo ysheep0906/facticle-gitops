@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "facticle-frontend.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
+data:
+  VITE_API_URL: {{ .Values.frontendConfig.apiUrl | quote }}
+  VITE_REDIRECT_URI: {{ .Values.frontendConfig.redirectUri | quote }}
+  VITE_GOOGLE_CLIENT_ID: {{ .Values.frontendConfig.googleClientId | quote }}
+  VITE_NAVER_CLIENT_ID: {{ .Values.frontendConfig.naverClientId | quote }}
+  VITE_KAKAO_CLIENT_ID: {{ .Values.frontendConfig.kakaoClientId | quote }}
