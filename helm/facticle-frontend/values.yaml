@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "56582ea9844eac390189bb80a4a1705581a8ae8a"
+  tag: "474dcc03b88bace79823902ddf35f993346ef032"
 
 frontendConfig:
   apiUrl: "http://facticle-backend.facticle-backend.svc.cluster.local:8080"
